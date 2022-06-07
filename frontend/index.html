@@ -14,7 +14,7 @@
 <body>
     <div id="login">
         <div class="container" id="container-login">
-            <h1 >Acceso</h1>
+            <h1 style="text-align: center;">Acceso</h1>
             <br>
             <div class="row">
                 <div class="col-sm-4">
@@ -26,7 +26,7 @@
                     </select>
                 </div>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Pin" required>
+                    <input type="password" class="form-control" placeholder="Pin" required>
                 </div>
                 <div class="col-sm-4">
                     <button type="button" class="btn btn-dark">Ingresar</button>
@@ -34,7 +34,8 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <br><br>
+    <div class="container" id="users">
         <div class="container" id="administrator">
             <h3>Administrador</h3>
             <div class="container" id="base-salary">
@@ -109,7 +110,7 @@
             <h3>Secretario</h3>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Salario base" required>
+                    <input type="text" class="form-control" placeholder="Salario base" readonly>
                 </div>
                 <div class="col">
                     <input type="text" class="form-control" placeholder="Horas extras" required>
@@ -127,7 +128,7 @@
             <h3>Vendedor</h3>
             <div class="row">
                 <div class="col">
-                    <input type="number" class="form-control" placeholder="Salario base" required>
+                    <input type="number" class="form-control" placeholder="Salario base" readonly>
                 </div>
                 <div class="col">
                     <input type="number" class="form-control" placeholder="Porcentaje comisión" required>
@@ -141,8 +142,66 @@
             </div>
         </div>
         <br><br>
+        <div class="container" id="assembler">
+            <h3>Ensamblador</h3>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" placeholder="Salario base" readonly>
+                </div>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" placeholder="Horas extras" required>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-danger">Enviar</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" placeholder="Cantidad zapatos" required>
+                </div>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" placeholder="Cantidad zapatillas" required>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" placeholder="Número de hijos" required>
+                </div>
+            </div>
+        </div>
     </div>
-
+    <br><br>
+    <div id="settlement">
+        <div class="container" id="container-settlement">
+            <h1 style="text-align: center;">Liquidación</h1>
+            <div class="row">
+                <div class="col">
+                    <label for="">Secretario</label>
+                    <label for=""></label>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="">Vendedor</label>
+                    <label for=""></label>
+                </div>                
+            </div> 
+            <div class="row">
+                <div class="col">
+                    <label for="">Ensamblador</label>
+                    <label for=""></label>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4 for="">Total liquidación</h4>
+                    <h4></h4>
+                </div>                
+            </div>          
+        </div>
+    </div>
 </body>
 
 </html>
