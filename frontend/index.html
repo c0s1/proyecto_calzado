@@ -7,202 +7,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
     <title>Empresa de calzado</title>
 </head>
 
 <body>
-    <div id="login">
-        <div class="container" id="container-login">
-            <h1 style="text-align: center;">Acceso</h1>
-            <br>
-            <div class="row">
-                <div class="col-sm-4">
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected value="">Seleccione el cargo</option>
-                        <option>Administrador</option>
-                        <option>Secretario</option>
-                        <option>Vendedor</option>
-                        <option>Ensamblador</option>
-                    </select>
-                </div>
-                <div class="col-sm-4">
-                    <input type="password" class="form-control" placeholder="Pin" required>
-                </div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-dark">Ingresar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br>
-    <div class="container" id="users">
-        <div class="container" id="administrator">
-            <h3>Administrador</h3>
-            <div class="container" id="base-salary">
-                <label for="">Modificación de salarios base para los cargos</label>
+    <div id="app">
+        <div id="login">
+            <div class="container" id="container-login">
+                <h1 style="text-align: center;">Acceso</h1>
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="Salario base" required>
-                    </div>
-                    <div class="col-sm-4">
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected value="">Seleccione el cargo</option>
+                            <option>Administrador</option>
                             <option>Secretario</option>
                             <option>Vendedor</option>
                             <option>Ensamblador</option>
                         </select>
                     </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <button type="button" class="btn btn-danger">Enviar</button>
-                        </div>                        
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control" placeholder="Pin" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-dark">Ingresar</button>
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="container" id="maximum-quantity">
-                <label for="">Cantidad máxima de zapatos y zapatillas para ensamblador</label>
-                <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" placeholder="Cantidad máxima de zapatos" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" placeholder="Precio ensamble" required>
-                    </div>                
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" placeholder="Cantidad máxima de zapatillas" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" placeholder="Precio ensamble" required>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-danger">Enviar</button>
-                    </div>                            
-                </div>
-            </div>
-            <br>
-            <div class="container" id="sales-commission">
-                <div class="row">
-                    <label for="">Comisión para vendedor</label>
+        </div>
+        <br><br>
+        <div class="container" id="users">
+            <div v-if="watch===0" class="container" id="administrator">
+                <h3>Administrador</h3>
+                <div class="container" id="base-salary">
+                    <label for="">Modificación de salarios base para los cargos</label>
                     <br>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control" placeholder="Comisión ventas realizadas" required>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="Salario base" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected value="">Seleccione el cargo</option>
+                                <option>Secretario</option>
+                                <option>Vendedor</option>
+                                <option>Ensamblador</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <button type="button" class="btn btn-danger">Enviar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
+                <div class="container" id="maximum-quantity">
+                    <label for="">Cantidad máxima de zapatos y zapatillas para ensamblador</label>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" placeholder="Cantidad máxima de zapatos" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" placeholder="Precio ensamble" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" placeholder="Cantidad máxima de zapatillas"
+                                required>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" placeholder="Precio ensamble" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-danger">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="container" id="sales-commission">
+                    <div class="row">
+                        <label for="">Comisión para vendedor</label>
+                        <br>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" placeholder="Comisión ventas realizadas" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-danger">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div v-if="watch===0" class="container" id="secretary">
+                <h3>Secretario</h3>
                 <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Salario base" readonly>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Horas extras" required>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Precio hora extra" required>
+                    </div>
                     <div class="col">
                         <button type="button" class="btn btn-danger">Enviar</button>
                     </div>
                 </div>
             </div>
+            <br><br>
+            <div v-if="watch===0" class="container" id="seller">
+                <h3>Vendedor</h3>
+                <div class="row">
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Salario base" readonly>
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Porcentaje comisión" required>
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Ventas" required>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div v-if="watch===0" class="container" id="assembler">
+                <h3>Ensamblador</h3>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" placeholder="Salario base" readonly>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" placeholder="Horas extras" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-danger">Enviar</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" placeholder="Cantidad zapatos" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" placeholder="Cantidad zapatillas" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" placeholder="Número de hijos" required>
+                    </div>
+                </div>
+            </div>
+            <br><br>
         </div>
-        <br><br>
-        <div class="container" id="secretary">
-            <h3>Secretario</h3>
-            <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Salario base" readonly>
+        <div v-if="watch===0" id="settlement">
+            <div class="container" id="container-settlement">
+                <h1 style="text-align: center;">Liquidación</h1>
+                <div class="row">
+                    <div class="col">
+                        <label for="">Secretario</label>
+                        <label for=""></label>
+                    </div>
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Horas extras" required>
+                <div class="row">
+                    <div class="col">
+                        <label for="">Vendedor</label>
+                        <label for=""></label>
+                    </div>
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Precio hora extra" required> 
+                <div class="row">
+                    <div class="col">
+                        <label for="">Ensamblador</label>
+                        <label for=""></label>
+                    </div>
                 </div>
-                <div class="col">
-                    <button type="button" class="btn btn-danger">Enviar</button>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="container" id="seller">
-            <h3>Vendedor</h3>
-            <div class="row">
-                <div class="col">
-                    <input type="number" class="form-control" placeholder="Salario base" readonly>
-                </div>
-                <div class="col">
-                    <input type="number" class="form-control" placeholder="Porcentaje comisión" required>
-                </div>
-                <div class="col">
-                    <input type="number" class="form-control" placeholder="Ventas" required>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-danger">Enviar</button>
+                <div class="row">
+                    <div class="col">
+                        <h4 for="">Total liquidación</h4>
+                        <h4></h4>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br><br>
-        <div class="container" id="assembler">
-            <h3>Ensamblador</h3>
-            <div class="row">
-                <div class="col-sm-4">
-                    <input type="number" class="form-control" placeholder="Salario base" readonly>
-                </div>
-                <div class="col-sm-4">
-                    <input type="number" class="form-control" placeholder="Horas extras" required>
-                </div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-danger">Enviar</button>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-4">
-                    <input type="number" class="form-control" placeholder="Cantidad zapatos" required>
-                </div>
-                <div class="col-sm-4">
-                    <input type="number" class="form-control" placeholder="Cantidad zapatillas" required>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-4">
-                    <input type="number" class="form-control" placeholder="Número de hijos" required>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br>
-    <div id="settlement">
-        <div class="container" id="container-settlement">
-            <h1 style="text-align: center;">Liquidación</h1>
-            <div class="row">
-                <div class="col">
-                    <label for="">Secretario</label>
-                    <label for=""></label>
-                </div>                
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="">Vendedor</label>
-                    <label for=""></label>
-                </div>                
-            </div> 
-            <div class="row">
-                <div class="col">
-                    <label for="">Ensamblador</label>
-                    <label for=""></label>
-                </div>                
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h4 for="">Total liquidación</h4>
-                    <h4></h4>
-                </div>                
-            </div>          
         </div>
     </div>
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.0-alpha.4/vue.js"></script>
+<script src="../backend/main.js"></script>
 
 </html>
