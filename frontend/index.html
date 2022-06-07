@@ -14,24 +14,26 @@
 <body>
     <div id="app">
         <div id="login">
-            <div class="container" id="container-login">
+            <div class="container" id="container-login" style="align-content: center;">
                 <h1 style="text-align: center;">Acceso</h1>
                 <br>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected value="">Seleccione el cargo</option>
-                            <option>Administrador</option>
-                            <option>Secretario</option>
-                            <option>Vendedor</option>
-                            <option>Ensamblador</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="password" class="form-control" placeholder="Pin" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-dark">Ingresar</button>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected value="">Seleccione el cargo</option>
+                                <option>Administrador</option>
+                                <option>Secretario</option>
+                                <option>Vendedor</option>
+                                <option>Ensamblador</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="password" class="form-control" placeholder="Pin" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-dark">Ingresar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,17 +45,18 @@
                 <div class="container" id="base-salary">
                     <label for="">Modificación de salarios base para los cargos</label>
                     <br>
-                    <div class="row">
+                    <div class="row">                        
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" placeholder="Salario base" required>
+                            <select v-model="user" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected value="0">Seleccione el cargo</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Secretario</option>
+                                <option value="3">Vendedor</option>
+                                <option value="4">Ensamblador</option>
+                            </select>
                         </div>
                         <div class="col-sm-4">
-                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                <option selected value="">Seleccione el cargo</option>
-                                <option>Secretario</option>
-                                <option>Vendedor</option>
-                                <option>Ensamblador</option>
-                            </select>
+                            <input v-model="baseSalary" type="text" class="form-control" placeholder="Salario base" required>
                         </div>
                         <div class="row">
                             <div class="col-sm">
