@@ -20,7 +20,9 @@ var app = new Vue({
         hoursExtraSecretary: "",
         commissionSales: "",
         salesMade: "",
-        subsidyTransport: 117.172
+        subsidyTransport: 117.172,
+        hoursExtraAssembly: "",
+        priceHourAssembly: "",
 
 
     },
@@ -77,7 +79,11 @@ var app = new Vue({
             totalSalarySeller = this.commissionSales + bonus + this.subsidyTransport
         },
         calculateAssembly: function () {
-            
+            let priceHourAssembly = 0
+            const search = users.find(element => element.id == 4)
+            priceHourAssembly = (search.salary / 30) / 8
+            priceExtraAssembly = this.hoursExtraAssembly * priceHourAssembly
+            //priceHourExtraAssembly
         },
         showComponent: function () {
             
