@@ -48,7 +48,7 @@
                     <div class="row">                        
                         <div class="col-sm-4">
                             <select v-model="user" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                <option selected value="0">Seleccione el cargo</option>
+                                <option selected value="">Seleccione el cargo</option>
                                 <option value="1">Administrador</option>
                                 <option value="2">Secretario</option>
                                 <option value="3">Vendedor</option>
@@ -59,8 +59,11 @@
                             <input v-model="baseSalary" type="text" class="form-control" placeholder="Salario base" required>
                         </div>
                         <div class="row">
-                            <div class="col-sm">
-                                <button type="button" class="btn btn-danger">Enviar</button>
+                            <div class="col-sm-2">
+                                <button @click="showSalary" type="button" class="btn btn-danger">Enviar</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success">Modificar</button>
                             </div>
                         </div>
                     </div>
@@ -71,26 +74,26 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" placeholder="Cantidad máxima de zapatos" required>
+                            <input v-model="maxShoes" type="number" class="form-control" placeholder="Cantidad máxima de zapatos" required>
                         </div>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" placeholder="Precio ensamble" required>
+                            <input v-model="maxSlippers" type="number" class="form-control" placeholder="Precio ensamble" required>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" placeholder="Cantidad máxima de zapatillas"
+                            <input v-model="priceShoes" type="number" class="form-control" placeholder="Cantidad máxima de zapatillas"
                                 required>
                         </div>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" placeholder="Precio ensamble" required>
+                            <input v-model="priceSlippers" type="number" class="form-control" placeholder="Precio ensamble" required>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-danger">Enviar</button>
+                            <button @click="sendPriceAssembly" type="button" class="btn btn-danger">Enviar</button>
                         </div>
                     </div>
                 </div>
@@ -100,7 +103,7 @@
                         <label for="">Comisión para vendedor</label>
                         <br>
                         <div class="col-sm-4">
-                            <input type="number" class="form-control" placeholder="Comisión ventas realizadas" required>
+                            <input v-model="commissionSales" type="number" class="form-control" placeholder="Comisión ventas realizadas" required>
                         </div>
                     </div>
                     <br>
@@ -119,10 +122,10 @@
                         <input type="text" class="form-control" placeholder="Salario base" readonly>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Horas extras" required>
+                        <input v-model="hoursExtraSecretary" type="text" class="form-control" placeholder="Horas extras" required>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Precio hora extra" required>
+                        <input v-model="priceHourSecretary" type="text" class="form-control" placeholder="Precio hora extra" required>
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-danger">Enviar</button>
@@ -140,7 +143,7 @@
                         <input type="number" class="form-control" placeholder="Porcentaje comisión" required>
                     </div>
                     <div class="col">
-                        <input type="number" class="form-control" placeholder="Ventas" required>
+                        <input v-model="salesMade" type="number" class="form-control" placeholder="Ventas" required>
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-danger">Enviar</button>
