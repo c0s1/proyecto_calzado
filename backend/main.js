@@ -76,11 +76,15 @@ var app = new Vue({
             });
         },
         modifySalary: function(){
-            this.users.forEach(element => {
-                if (this.user == 0) {
-                    alert("Seleccione un cargo") 
-                 } else if(this.user == element.id){
+            if (this.user == 0) {
+                alert("Seleccione un cargo") 
+             }
+            this.users.forEach((element) => {
+                 if(element.id == this.user){
                     element.salary = this.baseSalary;
+                    alert(`Salario modificado a ${element.salary}`)
+                    this.user = ""
+                    this.baseSalary = ""
                  } 
             });
             
