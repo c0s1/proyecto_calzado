@@ -7,11 +7,13 @@ var app = new Vue({
             { id: 3, rol: "vendedor", pin: "3333", salary: 1800000, },
             { id: 4, rol: "ensamblador", pin: "4444", salary: 1500000, },
         ],
+        secretary: [],
         watchUser: 0,
         userRole: "",
         userPin: "",
         user: "",
-        baseSalary:"",
+        baseSalary: "",
+        salaryRol: "",
         maxShoes: "",
         maxSlippers: "",
         priceShoes: "",
@@ -30,12 +32,12 @@ var app = new Vue({
     },
     methods: {
         login: function () {
-            if(this.userRole == "" || this.userPin == ""){
+            if (this.userRole == "" || this.userPin == "") {
                 alert("Ingresa los datos correctamente")
             }
 
-            this.users.forEach((element) =>{
-                if(element.id == this.userRole && element.pin == this.userPin){
+            this.users.forEach((element) => {
+                if (element.id == this.userRole && element.pin == this.userPin) {
                     switch (this.userRole) {
                         case 1:
                             this.watchUser = 1;
@@ -52,8 +54,8 @@ var app = new Vue({
                         case 4:
                             this.watchUser = 4;
                             console.log(this.userRole)
-                            break;                       
-                    
+                            break;
+
                         default:
                             break;
                     }
@@ -61,11 +63,11 @@ var app = new Vue({
             });
         },
         close: function () {
-           this.watchUser = 0;
-           this.userRole = "" 
-           this.userPin = "";
+            this.watchUser = 0;
+            this.userRole = ""
+            this.userPin = "";
         },
-        showSalary: function() {
+        showSalary: function () {
             if (this.user == "") {
                 alert("Seleccione un cargo");
             }
@@ -75,39 +77,52 @@ var app = new Vue({
                 }
             });
         },
-        modifySalary: function(){
+        modifySalary: function () {
             if (this.user == 0) {
-                alert("Seleccione un cargo") 
-             }
+                alert("Seleccione un cargo")
+            }
             this.users.forEach((element) => {
-                 if(element.id == this.user){
+                if (element.id == this.user) {
                     element.salary = this.baseSalary;
                     alert(`Salario modificado a ${element.salary}`)
                     this.user = ""
                     this.baseSalary = ""
-                 } 
+                }
             });
-            
+
         },
         sendPriceAssembly: function () {
             maxShoes = this.maxShoes
             maxSlippers = this.maxSlippers
             priceShoes = this.priceShoes
-            priceSlippers = this.priceSlippers            
+            priceSlippers = this.priceSlippers
+            alert(this.maxShoes)
         },
+
         calculateSecretary: function () {
             let netSalarySecretary = 0
-           const search = users.find(element => element.id == 2)
-           this.priceHourSecretary = (search.salary / 30) / 8
-           netSalarySecretary = this.hoursExtraSecretary * 1.80
-           totalSalarySecretary = search.salary + netSalarySecretary           
+                this.users.forEach((element) => {
+                    if (element.id == 2) {
+                        this.priceHourSecretary = (element.salary / 30) / 8
+                        netSalarySecretary = (this.priceHourSecretary * 1.80) * this.hoursExtraSecretary
+                        this.totalSalarySecretary = element.salary + netSalarySecretary
+
+                        alert(this.totalSalarySecretary)
+                    }
+                    this.secretary.push({
+                        salaryRol: this.salaryRol,
+                        hoursExtraSecretary: this.hoursExtraSecretary,
+                        priceHourSecretary: this.priceHourSecretary,
+                        totalSalarySecretary: this.totalSalarySecretary
+                    });
+                });
         },
         calculateSeller: function () {
             let bonus = 0
             const search = users.find(element => element.id == 3)
-            if(this.salesMade >= 5000000){
+            if (this.salesMade >= 5000000) {
                 bonus = search.salary * 0.1
-            } else if(this.salesMade >= 10000000 ){
+            } else if (this.salesMade >= 10000000) {
                 bonus = search.salary * 0.2
             }
             totalSalarySeller = this.commissionSales + bonus + this.subsidyTransport
@@ -119,11 +134,22 @@ var app = new Vue({
             priceExtraAssembly = this.hoursExtraAssembly * priceHourAssembly
             //priceHourExtraAssembly
         },
-        showComponent: function () {
-            
+        showSalaryRol: function () {
+            this.users.forEach((element) => {
+                if (element.id == this.watchUser) {
+                    console.log(element.salary)
+                    this.salaryRol = element.salary
+                }
+            });
+
+        },
+        clear: function () {
+            this.hoursExtraSecretary = ""
+            this.priceHourSecretary = ""
+            this.totalSalarySecretary = ""
         }
     },
     computed: {
-        
+
     }
-  })
+})

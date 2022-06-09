@@ -41,7 +41,7 @@
         </div>
         <br><br>
         <!-- Contenedor administrador -->
-        <div v-if="watchUser == 0" class="container" id="administrator">
+        <div v-if="watchUser == 1" class="container" id="administrator">
             <button @click="close" type="button" class="btn btn-dark">Salir</button>
             <h3>Administrador</h3>
             <div class="container" id="base-salary">
@@ -123,17 +123,31 @@
             <h3>Secretario</h3>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Salario base" readonly>
+                    <input v-model="salaryRol" type="text" class="form-control" placeholder="Salario base" readonly>
+                    <div class="row">
+                        <div class="col">
+                            <br><button @click="showSalaryRol" type="button" class="btn btn-danger">Mostrar</button>
+                        </div>
+                        <div class="col">
+                            <br><button @click="clear" type="button" class="btn btn-danger">Limpiar</button>
+                        </div>
+                    </div>                 
                 </div>
                 <div class="col">
                     <input v-model="hoursExtraSecretary" type="text" class="form-control" placeholder="Horas extras" required>
                 </div>
                 <div class="col">
-                    <input v-model="priceHourSecretary" type="text" class="form-control" placeholder="Precio hora extra" required>
+                    <input v-model="priceHourSecretary" type="text" class="form-control" placeholder="Precio hora extra" readonly>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-danger">Enviar</button>
+                    <button @click="calculateSecretary" type="button" class="btn btn-danger">Enviar</button>
                 </div>
+            </div><br><br>
+            <div class="container">
+                <h2>Salario base: {{salaryRol}}</h2>
+                <h2>Cantidad horas extras: {{hoursExtraSecretary}}</h2>
+                <h2>Precio hora extra: {{priceHourSecretary}}</h2>
+                <h4>Total liquidación: {{totalSalarySecretary}}</h4>
             </div>
         </div>
         <br><br>
@@ -143,7 +157,8 @@
             <h3>Vendedor</h3>
             <div class="row">
                 <div class="col">
-                    <input type="number" class="form-control" placeholder="Salario base" readonly>
+                    <input v-model="salaryRol" type="number" class="form-control" placeholder="Salario base" readonly>
+                    <br><button @click="showSalaryRol" type="button" class="btn btn-danger">Mostrar</button>
                 </div>
                 <div class="col">
                     <input type="number" class="form-control" placeholder="Porcentaje comisión" required>
@@ -163,7 +178,8 @@
             <h3>Ensamblador</h3>
             <div class="row">
                 <div class="col-sm-4">
-                    <input type="number" class="form-control" placeholder="Salario base" readonly>
+                    <input v-model="salaryRol" type="number" class="form-control" placeholder="Salario base" readonly>
+                    <br><button @click="showSalaryRol" type="button" class="btn btn-danger">Mostrar</button>
                 </div>
                 <div class="col-sm-4">
                     <input v-model="hoursExtraAssembly" type="number" class="form-control" placeholder="Horas extras" required>
