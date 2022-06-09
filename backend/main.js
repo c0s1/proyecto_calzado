@@ -1,15 +1,17 @@
 var app = new Vue({
     el: '#app',
     data: {
-        watch: 0,
-        users: [{
-            id: 1, rol: "administrator", password: "1111", salary: 5500000,
-            id: 2, rol: "secretary", password: "2222", salary: 2200000,
-            id: 3, rol: "seller", password: "3333", salary: 1800000,
-            id: 4, rol: "assembler", password: "4444", salary: 1500000,
-        }],
+        users: [
+            { id: 1, rol: "administrador", pin: "1111", salary: 5500000, },
+            { id: 2, rol: "secretario", pin: "2222", salary: 2200000, },
+            { id: 3, rol: "vendedor", pin: "3333", salary: 1800000, },
+            { id: 4, rol: "ensamblador", pin: "4444", salary: 1500000, },
+        ],
+        watchUser: 0,
+        userRole: "",
+        userPin: "",
         user: "",
-        baseSalary:0,
+        baseSalary:"",
         maxShoes: "",
         maxSlippers: "",
         priceShoes: "",
@@ -27,21 +29,49 @@ var app = new Vue({
 
     },
     methods: {
+        login: function () {
+            if(this.userRole == "" || this.userPin == ""){
+                alert("Ingresa los datos correctamente")
+            }
+
+            this.users.forEach((element) =>{
+                if(element.id == this.userRole && element.pin == this.userPin){
+                    switch (this.userRole) {
+                        case 1:
+                            this.watchUser = 1;
+                            console.log(this.userRole)
+                            break;
+                        case 2:
+                            this.watchUser = 2;
+                            console.log(this.userRole)
+                            break;
+                        case 3:
+                            this.watchUser = 3;
+                            console.log(this.userRole)
+                            break;
+                        case 4:
+                            this.watchUser = 4;
+                            console.log(this.userRole)
+                            break;                       
+                    
+                        default:
+                            break;
+                    }
+                }
+            });
+        },
+        close: function () {
+           this.watchUser = 0;
+           this.userRole = "" 
+           this.userPin = "";
+        },
         showSalary: function() {
-            // if (this.user === "") {
-            //     alert("Seleccione cargo")
-            // } else if (this.user === "1") {
-            //     alert(this.baseSalary)
-            // } else {
-            //     alert("Hola")
-            // }
-            
-            this.users.forEach(element => {
-                if (this.user === "") {
-                    alert("Seleccione un cargo")
-                } else if(this.user === element.id){ 
+            if (this.user == "") {
+                alert("Seleccione un cargo");
+            }
+            this.users.forEach((element) => {
+                if (element.id == this.user) {
                     this.baseSalary = element.salary
-                    alert(element.salary)
                 }
             });
         },
