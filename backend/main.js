@@ -118,21 +118,28 @@ var app = new Vue({
                 });
         },
         calculateSeller: function () {
-            let bonus = 0
-            const search = users.find(element => element.id == 3)
-            if (this.salesMade >= 5000000) {
-                bonus = search.salary * 0.1
-            } else if (this.salesMade >= 10000000) {
-                bonus = search.salary * 0.2
-            }
-            totalSalarySeller = this.commissionSales + bonus + this.subsidyTransport
+            this.users.forEach((element) => {
+                if (element.id == 3) {
+                    let bonus = 0
+                    if (this.salesMade >= 5000000) {
+                        bonus = search.salary * 0.1
+                    } else if (this.salesMade >= 10000000) {
+                        bonus = search.salary * 0.2
+                    }
+                    totalSalarySeller = this.commissionSales + bonus + this.subsidyTransport
+                }
+            });
+            
         },
         calculateAssembly: function () {
-            let priceHourAssembly = 0
-            const search = users.find(element => element.id == 4)
-            priceHourAssembly = (search.salary / 30) / 8
-            priceExtraAssembly = this.hoursExtraAssembly * priceHourAssembly
-            //priceHourExtraAssembly
+            this.users.forEach((element) => { 
+                if (element.id == 3) {
+                    let priceHourAssembly = 0
+                    priceHourAssembly = (search.salary / 30) / 8
+                    priceExtraAssembly = this.hoursExtraAssembly * priceHourAssembly
+                    //priceHourExtraAssembly
+                }
+            });
         },
         showSalaryRol: function () {
             this.users.forEach((element) => {
